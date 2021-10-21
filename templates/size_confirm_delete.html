@@ -1,0 +1,25 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block body %}
+
+
+<div class="container">
+    <div class="row justify-content-md-center">
+    <div class="col-lg-6 text-center mt-5">
+        <p class="lead display-6">Are you sure you want to delete the record?</p>
+        <form action="" method="POST">
+        {% csrf_token %}
+        <span><input class="btn btn-danger me-4 px-3 py-2" type="submit" value="Delete"></span>
+        <span><a class="btn btn-dark text-decoration-none  px-3 py-2" href="{% url 'colorlist' %}">Cancel</a></span>
+        </form>
+</div>
+</div>
+</div>
+{% endblock body %}
+
+
+
+
+
+
+

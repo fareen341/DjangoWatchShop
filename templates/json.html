@@ -1,0 +1,190 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+
+    <style>
+/* Scss Document */
+.orange-fade {
+    background: #ff910e;
+    background: linear-gradient(135deg,#ff910e 0,#ffa841 100%);
+}
+.pos-r {
+    position: relative!important;
+}
+.white {
+    background: #fff;
+}
+.text-white {
+    color: #fff!important;
+}
+.text-gray {
+    color: #363636;
+}
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.separator {
+    width: 14%;
+    height: 3px;
+    margin: 1.2em auto 1em;
+    background: #ffc53a;
+}
+.one-slide {
+  border-radius: 3px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1.1rem;
+  height: 300px;
+}
+.one-slide img {
+  width: 60%;
+}
+.carousel-controls .control {
+  position: absolute;
+  cursor: pointer;
+  top: 56.4%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  c
+}
+.prev {
+  left: -1.875rem;
+}
+.next {
+  right: -1.875rem;
+}
+.testimonial-carousel { 
+  &.slick-initialized { 
+    display: block; 
+  }
+ .message {
+    width: 100%;
+    font-size: .9rem;
+  }
+  .brand {
+    width: 100%;
+  }
+  @media (max-width: 575px) {
+    .one-slide {
+	    height: 200px;
+	  }
+    img {
+  	    width: 40%;
+  	  }
+  }
+}
+    </style>
+  </head>
+  <body>
+    <p class="lead text-center">Json page</p>
+    <p class="text-center"> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#A32CC4" class="bi bi-dash-lg" viewBox="0 0 16 16">
+  <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+</svg></p>
+<section class="orange-fade p-5 margin-top-xl pos-r">
+  <div class="container">
+   	<div class="row">
+		<div class="col-sm-12">
+        <h2 class="text-center font-weight-bold text-white">Our Customers are Seeing Big Results</h2>
+        <p></p>
+       <div class="mt-5 pos-r">
+          <div class="carousel-controls testimonial-carousel-controls">
+            <div class="control prev"><i class="fa fa-chevron-left text-white">&nbsp;</i></div>
+            <div class="control next"><i class="fa fa-chevron-right text-white">&nbsp;</i></div>
+          </div>
+          <div class="testimonial-carousel">
+            <div class="one-slide white">
+              <div class="testimonial w-100 h-100  p-3 text-center">
+                <div class="message text-center text-gray">I have been working with Solodev for nearly 4 years and I couldn&#39;t be happier with the results!</div>
+                <div class="separator">&nbsp;</div>
+                <div class="brand"><img alt="Florida Dairy Farmers" src="https://raw.githubusercontent.com/solodev/slider-boxes/master/images/img-1.png" class="mx-auto"/></div>
+              </div>
+            </div>
+            <div class="one-slide white">
+              <div class="testimonial w-100 h-100  p-3 text-center">
+                <div class="message text-center text-gray">The interface is easy for a novice user to make updates just as easily as an experienced developer.</div>
+                <div class="separator">&nbsp;</div>
+                <div class="brand"><img alt="Florida Department of Education" src="https://raw.githubusercontent.com/solodev/slider-boxes/master/images/img-2.png" class="mx-auto"/></div>
+              </div>
+            </div>
+            <div class="one-slide white">
+              <div class="testimonial w-100 h-100  p-3 text-center">
+                <div class="message text-center text-gray">Solodev is a great company to partner with! We are extremely happy with the software, service, and support.</div>
+                <div class="separator">&nbsp;</div>
+                <div class="brand"><img alt="Seminole County" src="https://raw.githubusercontent.com/solodev/slider-boxes/master/images/img-3.png" class="mx-auto" /></div>
+              </div>
+            </div>
+            <div class="one-slide white">
+              <div class="testimonial w-100 h-100  p-3 text-center">
+                <div class="message text-center text-gray">If you are looking for a great CMS company then Solodev is the right choice.</div>
+                <div class="separator">&nbsp;</div>
+                <div class="brand"><img alt="Lynx" src="https://raw.githubusercontent.com/solodev/slider-boxes/master/images/img-4.png" class="mx-auto" /></div>
+              </div>
+            </div>
+            <div class="one-slide white">
+              <div class="testimonial w-100 h-100  p-3 text-center">
+                <div class="message text-center text-gray">Everyone on the Solodev team is very knowledgeable and they have been always been very responsive.</div>
+                <div class="separator">&nbsp;</div>
+                <div class="brand"><img alt="Miami Beach VCA" src="https://raw.githubusercontent.com/solodev/slider-boxes/master/images/img-5.png" class="mx-auto" /></div>
+              </div>
+            </div>
+            <div class="one-slide white">
+              <div class="testimonial w-100 h-100  p-3 text-center">
+                <div class="message text-center text-gray">Solodev has been able to successfully keep us at the forefront of our industry and continually meet our ever adapting needs.</div>
+                <div class="separator">&nbsp;</div>
+                <div class="brand"><img alt="Oneblood" src="https://raw.githubusercontent.com/solodev/slider-boxes/master/images/img-6.png" class="mx-auto" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <script>$(document).ready(function() {
+    $(".testimonial-carousel").slick({
+        infinite: !0,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: !1,
+        arrows:true,
+        prevArrow: $(".testimonial-carousel-controls .prev"),
+        nextArrow: $(".testimonial-carousel-controls .next"),
+        responsive: [{
+            breakpoint: 1200,
+            settings: {
+                slidesToShow: 3
+            }
+        }, {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2
+            }
+        }, {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 1
+            }
+        }]
+    });
+});
+  </script>
+  </body>
+</html>

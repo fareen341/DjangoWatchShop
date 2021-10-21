@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+{% block productpagedesign %}{% endblock productpagedesign %}
+
+{% block body %}  
+<h1>Mycart</h1>
+
+        {% for cart,cart1 in mylist %}
+            <td><img src="{{cart.prodobj.product_image.url}}" height="200px" width="200px">
+            <label>{{cart.prodobj.product_name}}</label></td>
+            <td>Price:{{cart1.price}}</td>
+            <td>Quantity:{{cart1.qnt}}</td>
+            input<input type="number" class="quantity" id="{{cart.prodobj.id}}" value="{{cart1.qnt}}">
+
+      {% endfor %} 
+
+{% comment %} 
+{% if mylist %}
+hello
+{% else %}
+bye
+{% endif %} {% endcomment %}
+
+
+      
+
+
+
+
+
+{% endblock body %}
+{% block productpagejs %}{% endblock productpagejs %}
+

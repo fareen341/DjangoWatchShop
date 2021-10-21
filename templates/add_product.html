@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Product{% endblock title %}
+
+{% block body %}  
+
+<div class="container mt-5"> 
+<div class="row justify-content-md-center">
+<div class="col-lg-3" >
+   <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+    <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
+   <span class="fs-5 fw-semibold">Other Details</span>
+    </p>
+    <ul class="list-group" >
+        <a href="{% url "info" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Information</li></a>
+       <a href="{% url "color" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Colors</li></a>
+       <a href="{% url "brand" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Brands</li></a>
+        <a href="{% url "size" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Sizes</li></a>
+        <a href="{% url "colorlist" %}" style="text-decoration:none;"><li class="list-group-item">Color, Brand, Size List</li></a>
+       <a href="{% url "productlist" %}" style="text-decoration:none;"><li class="list-group-item">Product List</li></a>
+       
+
+        {% comment %} <a href="{% url "sameproduct" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Same Products</li></a>
+        <a href="{% url "cartproduct" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Cart Product</li></a> {% endcomment %}
+        </ul>
+   </div>
+</div>
+
+    <div class="col-lg-8 pt-5">
+        <embed src="{% url 'info' %}" width="100%" height="400" name="iframe_a" />
+    </div>
+</div>
+</div>
+</div>
+
+
+<!--CHANGE THE BOOSTRAP OF THIS AFTER MODEL IS FIXED-->
+<div class="container">
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my=0" role="alert">
+{{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+    <div class="row">
+    {% load crispy_forms_tags %}
+    <h1 class="text-center">Product form</h1>
+    <form action="/addproducts/" method="POST" enctype="multipart/form-data">    
+    {% csrf_token %}
+    {% comment %} {{form|crispy}} {% endcomment %}
+    <h4>Add product details</h4>
+    <hr>
+		<div class="form-row">
+  			<div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_group_name|as_crispy_field }}
+  			</div>
+            <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_name|as_crispy_field }}
+  			</div>
+ 	 		<div class="form-group col-lg-4 col-sm-12">
+     				{{ form.color|as_crispy_field }}
+  			</div>
+        </div>
+          <div class="form-row">
+               <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.brand|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.size|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.regular_price|as_crispy_field }}
+  			</div>
+        </div>
+        <div class="form-row">
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_belongs|as_crispy_field }}
+  			</div>
+             <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_desc|as_crispy_field }}
+  			</div>
+        </div>
+            <h4>Add sale details</h4>
+            <hr>
+        <div class="form-row">
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.sale_price|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.sale_last_date|as_crispy_field }}
+  			</div>
+        </div>
+              <h4>Product images</h4>
+              <hr>
+        <div class="form-row">
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_image|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_img1|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_img2|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.product_img3|as_crispy_field }}
+  			</div>
+        </div>
+            <h4>Product display details</h4>
+              <hr>
+        <div class="form-row">
+            <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.display_product|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.featured_product|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.display_on_women_section|as_crispy_field }}
+  			</div>
+        </div>
+        <div class="form-row">
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.display_on_men_section|as_crispy_field }}
+  			</div>
+              <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.display_on_offer_section|as_crispy_field }}
+  			</div>
+                <div class="form-group col-lg-4 col-sm-12">
+     				{{ form.date|as_crispy_field }}
+  			</div>
+		</div> 
+        <input type="submit" value="Add Product" class="p-2" style="background-color:black; color:white;">
+        </form>
+    </div>
+</div>
+
+ <!--<div class="b-example-divider"></div>-->
+ <br>
+ <br>
+
+
+
+ 
+
+
+{% endblock body %}

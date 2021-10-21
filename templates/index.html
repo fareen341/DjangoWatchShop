@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block productpagedesign %}{% endblock productpagedesign %}
+
+
+{% block body %}  
+
+
+<!--background image-->
+<div class="container-fluid m-0 p-0">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static "img/background-img.jpg" %}" class="d-block w-100" alt="..." height="500px" width="100%" style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block" style="background: rgba(25, 25, 25, .3);">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static "img/background-img2.jpg" %}" class="d-block w-100" alt="..." height="500px" width="100%" style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block" style="background: rgba(25, 25, 25, .3);">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item ">
+      <img src="{% static "img/background-img3.jpg" %}" class="d-block w-100" alt="..." height="500px" width="100%" style="object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block " style="background: rgba(25, 25, 25, .3);">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+<!--background image end-->
+
+<!--Title-->
+<div class="container-fluid my-5 text-center">
+    <h1 style="color:black">Products</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-dash-lg" viewBox="0 0 16 16">
+  <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+</svg>
+</div>
+<!--Title-->
+
+<!--Product Cards-->
+<div class="container">
+<div class="row g-3">
+    <div class="col-lg-4">
+            <div class="container">
+<div class="card  text-white">
+  <img src="{% static "img/card2.jpg" %}" class="card-img" alt="..." height="400px" width="100%" style="object-fit: cover;">
+  <div class="card-img-overlay" style="background: rgba(25, 25, 25, .3);">
+    <h1 class="card-title mt-5">20% off on brands</h1>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <a href="{% url 'product' %}" style="text-decoration:none;"><button type="button" class="btn btnstyle">Shop Now</button></a>
+  </div>
+</div>
+</div>
+    </div>
+
+    <div class="col-lg-4">
+            <div class="container">
+<div class="card text-white">
+  <img src="{% static "img/w6.jpg" %}" class="card-img" alt="..." height="400px" width="100%" style="object-fit: cover;">
+  <div class="card-img-overlay" style="background: rgba(25, 25, 25, .5);">
+    <h1 class="card-title mt-5">Latest Women Watch</h1>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <a href="{% url 'product' %}" style="text-decoration:none;"><button type="button" class="btn btnstyle">Shop Now</button></a>
+  </div>
+</div>
+</div>
+    </div>
+
+ <div class="col-lg-4">
+            <div class="container">
+<div class="card text-white">
+  <img src="{% static "img/background-img2.jpg" %}" class="card-img" alt="..." height="400px" width="100%" style="object-fit: cover;">
+  <div class="card-img-overlay" style="background: rgba(25, 25, 25, .5);">
+    <h1 class="card-title mt-5">Latest Men Watch</h1>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <a href="{% url 'product' %}" style="text-decoration:none;"><button type="button" class="btn btnstyle">Shop Now</button></a>
+  </div>
+</div>
+</div>
+    </div>
+</div>
+</div>
+<!--Product Cards ends-->
+
+<!--Title-->
+<div class="container-fluid my-5 text-center">
+    <h1 style="color:black">Featured Product</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-dash-lg" viewBox="0 0 16 16">
+  <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+</svg>
+</div>
+<!--Title-->
+
+
+
+<!--Feadured product start-->
+<div class="container">
+<div class="row">
+{% if all_product %}
+              {% for i in all_product|slice:"0:9" %}
+                {% if i.display_product == 'yes' %}
+
+                  <div class="col-lg-2 mb-5 productItem item"  data-category="{{i.product_belongs}}" data-category="{{i.product_belongs}}">                
+                  <a href="/product/{{i.id}}"  style="text-decoration:none; color:black;"><p><img src="{{i.product_image.url}}" class="card-img" alt="..." height="250px" width="100%" style="object-fit: cover;"></p>
+                      <p class="text-center mt-4 mb-3">{{i.product_name | title}}</p></a>
+
+                      {% if i.sale_price != None and i.sale_last_date >= date%}
+                        <p class="text-center lead"><del><b class="me-3">₹{{i.regular_price}}</b></del> <b class="text-danger">₹{{i.sale_price}}</b></p>
+                        {% else %}
+                        <p class="text-center lead"><b>₹{{i.regular_price}}</b></p>
+                      {% endif %} 
+                      <a href="/product/{{i.id}}" style="text-decoration:none; color:black;"> <button class="ms-3 text-light p-2" style="width:100%; border:none; background-color:black;">Buy Now <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg></button></a>
+                </div>
+                {% endif %}
+              {% endfor %}
+                  <div class="buttonToogle" style="display: none;">
+                   <a href="javascript:;" class="showMore"><p class="btn btn-dark">View More</p></a>
+                  </div>
+              </div>            
+              {% else %}
+                <div class="col-lg-12 mt-5">
+                  <h4 class="text-center">No product available</h4>
+                </div>
+        {% endif %}
+</div>
+<div class="text-center p-3"><button class="btn" style="border:1px solid black; color:white;"><a href="{% url 'product' %}" style="text-decoration:none; color:black;">Browse All Watches</a></button></div>
+</div>
+
+
+
+<!--Feadured product end-->
+
+<!--video section-->
+<div class="container my-5">
+    <div class="row" >
+    <div class="col-lg-8" style="margin:auto;">
+            <iframe width="100%" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+    </div>
+    </div>
+    </div>
+</div>
+<!--video section-->
+
+
+
+<!--Section start
+<div class="container mt-5">
+<div class="row" style="background-color:#e4a6f5;">
+    <div class="col">
+    <h3 style="color:black" class="text-center">Free Shipping</h3>
+    <p style="text-align:justify">Releases are published on GitHub and include icon fonts, license, and readme. Our package.json is also included, though our npm scrip</p>
+    </div>
+    <div class="col">
+    <h3 style="color:black" class="text-center">Free Shipping</h3>
+    <p style="text-align:justify">Releases are published on GitHub and include icon fonts, license, and readme. Our package.json is also included, though our npm scrip</p>
+    </div>
+    <div class="col">
+    <h3 style="color:black" class="text-center">Free Shipping</h3>
+    <p style="text-align:justify">Releases are published on GitHub and include icon fonts, license, and readme. Our package.json is also included, though our npm scrip</p>
+    </div>
+    <div class="col">
+    <h3 style="color:black" class="text-center">Free Shipping</h3>
+    <p style="text-align:justify">Releases are published on GitHub and include icon fonts, license, and readme. Our package.json is also included, though our npm scrip</p>
+    </div>
+</div>
+</div>
+<!--Section end-->  
+
+{% endblock body %}
+{% block productpagejs %}{% endblock productpagejs %}

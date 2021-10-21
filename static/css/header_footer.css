@@ -1,0 +1,112 @@
+/*DISPLAY MENU ON HOVER
+@media all and (min-width: 992px) {
+	.navbar .dropdown-menu-end{ right:0; left: auto;  }
+	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
+	.navbar .nav-item:hover .nav-link{ color: #A32CC4  }
+	.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
+	.navbar .dropdown-menu.fade-up{ top:180%;  }
+	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
+}
+*/
+
+
+/*MEGA MENU*/
+.navbar .megamenu{ padding: 1rem; }
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+
+  .navbar .has-megamenu{position:static!important;}
+  .navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
+
+}	
+/* ============ desktop view .end// ============ */
+
+/* ============ mobile view ============ */
+@media(max-width: 991px){
+  .navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse{
+    overflow-y: auto;
+      max-height: 90vh;
+      margin-top:10px;
+  }
+}
+/* ============ mobile view end ============ */
+
+
+/*MY STYLE*/
+.dropdown-item.active, .dropdown-item:active {
+  color: white;
+  text-decoration: none;
+  background-color: black;
+}
+.dropdown-item:hover{
+  color:rgb(209, 209, 209);
+}
+.navbar .nav-item:hover .nav-link{ 
+  color: rgb(209, 209, 209);
+  border-bottom:1px solid black;;
+  }
+.myclass{
+  color:black;
+}
+.myclass:hover{
+  color:rgb(209, 209, 209);
+}
+input{
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #ccc !important;
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+.btnstyle{
+background-color:white; 
+color:black;
+}
+.btnstyle:hover{
+  background-color: transparent;
+  border:1px solid white;
+  color:white;
+}
+
+
+
+/*INDEX PAGE STYLE START*/
+.box{
+  box-shadow: 5px 5px 5px #6e6c6c;
+  border:1px solid black;
+  margin-top:30px;
+  padding-bottom: 20px;
+}
+.boxcontent{
+  color:black ;
+  padding-bottom:20px; 
+  font-size:15px;
+
+}
+
+.boxbtn{
+  border:1px solid green; 
+  border-radius:5px; 
+  color:black; 
+  text-decoration:none; 
+  padding:5px;
+}
+
+.rs{
+  padding-left:50px; 
+  font-size:18px; 
+}
+/*INDEX PAGE STYLE END*/
+
+
+/*SHOP PAGE STYLE START*/
+.myimg:hover{
+  transform:scale(1.1);    
+}
+/*SHOP PAGE STYLE END*/
+
+
+

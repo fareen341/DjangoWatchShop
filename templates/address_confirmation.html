@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    
+  </head>
+  <body>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-6">
+    <p class="lead text-center">Your Details</p>
+    <p class="text-center"> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#A32CC4" class="bi bi-dash-lg" viewBox="0 0 16 16">
+  <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+</svg></p>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my=0" role="alert">
+{{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}<br>
+
+<p class="lead">Your Personal Detail</p>
+<hr>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Username:</th>
+      <td>{{user.username}}</td>
+    </tr>
+    <tr>
+      <th>First Name:</th>
+      <td>{{user.first_name | title}}</td>
+    </tr>
+    <tr>
+      <th>Last Name:</th>
+      <td>{{user.last_name | title}}</td>
+    </tr>
+    <tr>
+      <th>Email:</th>
+      <td>{{user.email}}</td>
+    </tr>
+
+  </tbody>
+</table>
+{% comment %} <p><a class="btn btn-dark" href={% url 'fareen' %} class="text-decoration-none">Edit Personal Detail</a></p>   {% endcomment %}
+
+{% if user.userprofile %}
+<p class="lead">Location and Contact detail</p>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Location:</th>
+      <td>{{user.userprofile.location}}</td>
+    </tr>
+     <tr>
+      <th>Contact:</th>
+      <td>{{user.userprofile.contact}}</td>
+    </tr>
+  </tbody>
+</table>
+
+  <p><a class="btn btn-dark py-2"  href={% url 'myorder' %} style="text-decoration:none; color:white; width:100%; border:none;">Place Order</a></p>
+  {% comment %} <p><a class="btn btn-dark" href={% url 'edituser' %} class="text-decoration-none">Edit Location and Contact</a></p> {% endcomment %}
+ 
+
+{% else %}
+<p class="lead">Please complete your address detail before proceding</p>
+<a class="btn btn-dark" href="{% url 'account' %}">Complete address</a>
+{% endif %}
+</div>
+</div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

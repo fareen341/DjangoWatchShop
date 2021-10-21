@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}product{% endblock title %}
+{% block productpagedesign %}{% endblock productpagedesign %}
+
+{% block body %}  
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="bootstrap" viewBox="0 0 118 94">
+    <title>Bootstrap</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+  </symbol>
+</svg>
+
+<!--HEADER START-->
+<div class="container">
+<div class="row justify-content-md-center m-3">
+  <div class="col-lg-3">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light">
+        <li class="breadcrumb-item"><a class="text-decoration-none text-success" href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">All product</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <div class="col-lg-8">
+  <div class="row">
+        <div class="col-lg-4">
+            <div class="col-auto">
+              
+              <input type="text" class="form-control" id="myInput" placeholder="Search">
+            </div>
+        </div>
+         <div class="col-lg-4">
+          <select class="form-select" aria-label="Default select example">
+  <option selected>Sort By</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+        </div>
+  </div>
+</div>
+</div>
+<!--HEADER END-->
+
+<!--PRODUCTS START-->
+
+<!--MODAL FOR MOBILE START-
+
+<div class="d-lg-none d-md-none">hide on screens smaller than lg
+<div class="col-lg-3" style="border:1px solid;">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+<!-- Modal 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!--MODAL FOR MOBILE END-->
+ <div class="container mt-5"> 
+<div class="row justify-content-md-end"> 
+<div class="col-lg-3" >
+  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+    <a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 14">
+  <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg>
+      <span class="fs-5 fw-semibold ms-3">Filter</span>
+    </a>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed mybtn" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          Gender
+        </button>
+        <div class="collapse show" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <div class="form-check ms-4">
+                  <input class="form-check-input" type="checkbox" id="male" value="male">
+                  <label class="form-check-label" for="flexCheckDefault">
+                   Man
+                  </label>
+                </div>
+              <div class="form-check ms-4">
+                  <input class="form-check-input" type="checkbox" id="female" value="female">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Women
+                  </label>
+              </div>
+              <div class="form-check ms-4">
+                  <input class="form-check-input" type="checkbox" id="band" value="band">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Bands
+                  </label>
+              </div>
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed mybtn" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          Brands Available
+        </button>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          {% for i in brands %}
+              <div class="form-check ms-4">
+                  {% comment %} <input class="form-check-input" type="checkbox" id="{{i}}" value="{{i}}">
+                  <label class="form-check-label" for="flexCheckDefault"> {% endcomment %}
+                    {{i}}
+                  </label>
+              </div>
+          {% endfor %} 
+         
+          </ul>
+        </div>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed mybtn" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          Sizes Available
+        </button>
+        <div class="collapse" id="orders-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+            {% for i in sizes %}
+              <div class="form-check ms-4">
+                  {% comment %} <input class="form-check-input" type="checkbox" id="{{i}}" value="{{i}}">
+                  <label class="form-check-label" for="flexCheckDefault"> {% endcomment %}
+                    {{i}}
+                  </label>
+              </div>
+          {% endfor %}   
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed mybtn" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          Colors Available
+        </button>
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+             {% for i in colors %}
+              <div class="form-check ms-4">
+                  {% comment %} <input class="form-check-input" type="checkbox" id="{{i}}" value="{{i}}">
+                  <label class="form-check-label" for="flexCheckDefault"> {% endcomment %}
+                    {{i}}
+                  </label>
+              </div>
+          {% endfor %} 
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+<div class="col-lg-8 ">
+    <div class="row products items" id="myList">
+    {% comment %} <div class="products"> {% endcomment %}
+        {% if data %}
+              {% for i in data %}
+                {% if i.display_product == 'yes' %}
+
+                  <div class="col-lg-3 col-sm-6 col-md-6 mb-5 productItem item"  data-category="{{i.product_belongs}}" data-category="{{i.product_belongs}}">                
+                  <a href="/product/{{i.id}}"  style="text-decoration:none; color:black;"><p><img src="{{i.product_image.url}}" class="card-img" alt="..." height="230px" width="100%" ></p>
+                      <p class="text-center mt-4 mb-3">{{i.product_name | title}}</p></a>
+
+                      {% if i.sale_price != None and i.sale_last_date >= date%}
+                        <p class="text-center lead"><del><b class="me-3">₹{{i.regular_price}}</b></del> <b class="text-danger">₹{{i.sale_price}}</b></p>
+                        {% else %}
+                        <p class="text-center lead"><b>₹{{i.regular_price}}</b></p>
+                      {% endif %} 
+                      <a href="/product/{{i.id}}" style="text-decoration:none; color:black;"> <button class="ms-3 text-light p-2" style="width:100%; border:none; background-color:black;">Buy Now <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                      </svg></button></a>
+                </div>
+                {% endif %}
+              {% endfor %}
+                  <div class="buttonToogle" style="display: none;">
+                   <a href="javascript:;" class="showMore"><p class="btn btn-dark">View More</p></a>
+                  </div>
+              </div>            
+              {% else %}
+                <div class="col-lg-12 mt-5">
+                  <h4 class="text-center">No product available</h4>
+                </div>
+        {% endif %}
+    {% comment %} </div> {% endcomment %}
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+{% comment %} 
+<h1>example</h1>
+<div class="items">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+  <div class="item">Item 4</div>
+  <div class="item">Item 5</div>
+  <div class="item">Item 6</div>
+  <div class="item">Item 7</div>
+  <div class="item">Item 8</div>
+  <div class="item">Item 9</div>
+  <div class="item">Item 10</div>
+  <div class="item">Item 11</div>
+  <div class="item">Item 12</div>
+</div>
+
+<div class="buttonToogle" style="display: none;">
+  <a href="javascript:;" class="showMore">+ View More</a>
+</div> {% endcomment %}
+
+{% comment %} <br>
+{% for i in p %}
+    {{ forloop.counter }} {# starting index 1 #}
+    {{ forloop.counter0 }} {# starting index 0 #}
+    {# do your stuff #}
+{% endfor %} {% endcomment %}
+
+{% endblock body %}

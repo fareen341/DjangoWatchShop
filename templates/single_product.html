@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product{% endblock title %}
+
+{% block body %}  
+
+<!--product page start-->
+<div class="container">
+    <div class="row justify-content-md-center">
+        {% comment %} <div class="col-lg-1" style="border:1px solid">
+        hello {% endcomment %}
+            {% comment %} <ul class="list-group" >
+            <a href="{% static 'img/d1.jpg' %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item"><img src="{% static 'img/d1.jpg' %}" height="100px" width="100px"></li></a>
+            <a href="{% static 'img/d5.jpg' %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item"><img src="{% static 'img/d5.jpg' %}" height="50px" width="50px"></li></a>
+            <a href="{% static 'img/a6.jpg' %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item"><img src="{% static 'img/a6.jpg' %}" height="50px" width="50px"></li></a>
+
+             <a href="{% url "bills" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Download Bills</li></a>
+                <a href="{% url "address" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Address</li></a>
+                <a href="{% url "account_detail" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Account Details</li></a>
+        <a href="{% url "logout" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Logout</li></a>
+                </ul> {% endcomment %}
+           
+        {% comment %} </div>         {% endcomment %}
+
+        <div class="col-lg-4 pt-5">
+             <div class="container2">
+                <!-- Main view of our gallary -->
+                <!-- All images with side view -->
+                <div class="side_view">
+                    <img src="{{prod.product_image.url}}" height="100px" width="100%" onclick="change(this.src)">
+                    <img src="{{prod.product_img1.url}}" onclick="change(this.src)">
+                    <img src="{{prod.product_img2.url}}" onclick="change(this.src)">
+                    <img src="{{prod.product_img3.url}}" onclick="change(this.src)">                
+                </div>
+                <div class="main_view">
+                    <img src="{{prod.product_image.url}}" id="main" alt="IMAGE">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mt-5">
+            <p class="display-6">{{prod.product_name | title}}</p>
+
+            {% if prod.sale_price != None and prod.sale_last_date >= date %}
+                <p class="lead"><del><b class="me-3">₹{{prod.regular_price}}</b></del> <b class="text-danger">₹{{prod.sale_price}}</b></p>
+            {% else %}
+            <p class="lead">₹{{prod.regular_price}}</p>
+            {% endif %}
+
+            <p>{{prod.product_desc}}</p>
+            {% comment %} {% for i in prod.color.all %}
+                <p>color:{{i}}</p>
+            {% endfor %}
+            {% for i in prod.size.all %}
+                <p>brand:{{i}}</p>
+            {% endfor %} {% endcomment %}
+            <p>Brand: {{prod.brand | title}}</p>
+            
+            <div class="container">
+                <div class="row">
+                <p class="lead">Color Availble</p>
+                    {% for i in x%}
+                        {% if i.product_group_name == br %}
+                        <div class="col-lg-2 p-1" >
+                            <a href="/product/{{i.id}}" class="ms-1"  style="text-decoration:none; color:black;"><img src="{{i.product_image.url}}"  alt="..." height="40px" width="40px" ><span class="ms-2">{{i.color | lower}}</span></a>
+                        </div>
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+            </div>
+            {% comment %} {% if prod.stocak_quantity >= 1 %} {% endcomment %}
+                <a class="addtocart" class="btn btn-success" id="{{prod.id}}" href="/carts/{{prod.id}}" style="text-decoration:none;"><button style="width:100%; height:40px; color:white; background-color:black; border:none;">Add to cart</button></a>
+            {% comment %} {% else %}
+                <p class="ms-2" style="color:blue;">Out of stock</p>
+                <a class="addtocart" class="btn btn-success" id="{{prod.id}}" href="/fareencart/{{prod.id}}" style="text-decoration:none;"><button style="width:100%; height:40px; color:white; background-color:gainsboro; border:none;" disabled>Add to cart</button></a>
+            {% endif %} {% endcomment %}
+        </div>
+</div>
+<hr>
+</div>
+<!--product page end-->
+
+
+
+<!--ADDED BY ME(show here related product of the same brand)-->
+{% comment %} <div class="container">
+    <div class="row">
+     <p class="display-6">Color Availble</p>
+        {% for i in x%}
+            {% if i.nick_name == br %}
+            <div class="col-lg-1" >
+                <a href="/product/{{i.id}}"  style="text-decoration:none; color:black;"><img src="{{i.product_image.url}}"  alt="..." height="50px" width="50px" style="object-fit: cover;"><label>{{i.color}}</label></a>
+            </div>
+            {% endif %}
+        {% endfor %} 
+    </div>
+    <hr>
+</div> {% endcomment %}
+
+
+
+<div class="container">
+    <div class="row">
+     <p class="display-6">Related Products</p>
+        {% for i in x|slice:"0:9" %}
+            {% if i.brand == brands and i.product_group_name != br %}  <!--and i.product_group_name == 'yes' -->
+                <div class="col-lg-2 mb-5">
+                    <a href="/product/{{i.id}}"  style="text-decoration:none; color:black;"><p><img src="{{i.product_image.url}}"  alt="..." height="250px" width="80%" ></p>
+                    <p class="text-center mt-5 mb-4">{{i.product_name|title}}</p></a>
+                    <p class="text-center"><b>₹{{i.regular_price}}</b></p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}
+
+
+{% comment %} 
+product group name
+
+product name
+product color
+size
+regular price
+product image all 3
+prod desc
+prod belonging
+brand
+slug
+stock
+main product?
+featured product?
+if sale than show sale_price and date
+
+
+
+
+
+ {% endcomment %}

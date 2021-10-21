@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    
+  </head>
+  <body>
+    <p class="lead text-center">Get Session</p>
+
+
+{{c}}
+{{prod}}<br>
+{{price}}<br>
+{% for i in c %}
+  {% for j in p %}
+    {% if j.id == i %}
+      {{i}}
+    {% endif %}
+    {% endfor %}
+{% endfor %}
+<br>
+l value is:<br>{{l}}<br>
+
+{% for k in l %}
+  {% for m in p %}
+    {% if m.id == k %}
+      {{m.id}}
+      {{m.product_name}}
+      <form method="GET">
+      qnt=<input type="number" class="quantity" id="{{i.id}}" value="1">
+      </form>
+      <img src="{{m.product_image.url}}" height="100px" width="100px">
+      <br>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+<br>
+
+<hr>
+<br>
+Carts:<br>
+{{carts}}<br>
+
+{% for i in carts %}
+  {% for j in p %}
+    {% if j.id == 14%}
+      {{j.product_name}}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{{l}}
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  </body>
+</html>

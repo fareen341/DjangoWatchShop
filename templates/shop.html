@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Shop{% endblock title %}
+{% block productpagedesign %}{% endblock productpagedesign %}
+
+{% block body %}  
+
+
+<!--Title-->
+<div class="container-fluid my-5 text-center">
+    <h1 style="color:black;">Enjoy your discount on sale items</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-dash-lg" viewBox="0 0 16 16">
+  <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+</svg>
+</div>
+<!--Title-->
+
+<div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-lg-4">
+        <div class="container">
+           <a href="#"> <div class="card text-white myimg">
+            <img src="{% static "img/card1.jpg" %}" class="card-img" alt="..." height="400px" width="100%" >
+            <div class="card-img-overlay" style="background: rgba(25, 25, 25, .3);">
+                <h1 class="card-title mt-5">All products on sale</h1>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            </div></a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+        <div class="container">
+           <a href="#"> <div class="card text-white myimg">
+            <img src="{% static "img/a3.jpg" %}" class="card-img" alt="..." height="400px" width="100%" >
+            <div class="card-img-overlay" style="background: rgba(25, 25, 25, .3);">
+                <h1 class="card-title mt-5">20% off on fossial brand</h1>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            </div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--Title-->
+<div class="container-fluid my-5 text-center">
+    <h1 style="color:black;">Sale Watches</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-dash-lg" viewBox="0 0 16 16">
+  <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+</svg>
+</div>
+
+<!--Title-->
+<div class="container">
+    <div class="row">
+            {% if all_product %}
+                {% for i in all_product|slice:"20" %}
+                        {% if i.display_product == 'yes' and i.sale_price != None %}
+                            <div class="col-lg-2 mb-5 " >                
+                            <a href="/product/{{i.id}}"  style="text-decoration:none; color:black;"><p><img src="{{i.product_image.url}}" class="card-img" alt="..." height="250px" width="100%" ></p>
+                                <p class="text-center mt-4 mb-3">{{i.product_name | title}}</p></a>
+                                {% if i.sale_price != None and i.sale_last_date >= date%}
+                                    <p class="text-center lead"><del><b class="me-3">₹{{i.regular_price}}</b></del> <b class="text-danger">₹{{i.sale_price}}</b></p>
+                                    {% else %}
+                                    <p class="text-center lead"><b>₹{{i.regular_price}}</b></p>
+                                {% endif %} 
+                                <a href="/product/{{i.id}}" style="text-decoration:none; color:black;"> <button class="ms-3 text-light p-2" style="width:100%; border:none; background-color:black;">Buy Now <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg></button></a>
+                            </div>
+                        {% endif %}
+                {% endfor %}
+                       
+
+              {% else %}
+                <div class="col-lg-12 mt-5">
+                  <h4 class="text-center">No product available</h4>
+                </div>
+            {% endif %}
+    </div>
+</div>
+
+
+
+<!--Title-->
+<div class="container-fluid my-5 text-center">
+    <h1 style="color:black;">New Arrivals</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-dash-lg" viewBox="0 0 16 16">
+  <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+</svg>
+</div>
+<!--Title-->
+<div class="container">
+    <div class="row ">
+            {% if all_product %}
+                {% for i in all_product|slice:"8" %}
+                        {% if i.display_product == 'yes' %}
+                            <div class="col-lg-2 mb-5">                
+                            <a href="/product/{{i.id}}"  style="text-decoration:none; color:black;"><p><img src="{{i.product_image.url}}" class="card-img" alt="..." height="250px" width="100%" ></p>
+                                <p class="text-center mt-4 mb-3">{{i.product_name | title}}</p></a>
+                                {% if i.sale_price != None and i.sale_last_date >= date%}
+                                    <p class="text-center lead"><del><b class="me-3">₹{{i.regular_price}}</b></del> <b class="text-danger">₹{{i.sale_price}}</b></p>
+                                    {% else %}
+                                    <p class="text-center lead"><b>₹{{i.regular_price}}</b></p>
+                                {% endif %} 
+                                <a href="/product/{{i.id}}" style="text-decoration:none; color:black;"> <button class="ms-3 text-light p-2" style="width:100%; border:none; background-color:black;">Buy Now <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg></button></a>
+                            </div>
+                        {% endif %}
+                {% endfor %}
+
+              {% else %}
+                <div class="col-lg-12 mt-5">
+                  <h4 class="text-center">No product available</h4>
+                </div>
+            {% endif %}
+    </div>
+</div>
+
+{% endblock body %}
+{% block productpagejs %}{% endblock productpagejs %}

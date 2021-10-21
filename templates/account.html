@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Shop{% endblock title %}
+{% block productpagedesign %}{% endblock productpagedesign %}
+
+{% block body %}  
+
+
+<!--HEADER START
+<div class="container">
+<div class="row justify-content-md-center m-3">
+  <div class="col-lg-3">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+        <li class="breadcrumb-item active" aria-current="page">All product</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <div class="col-lg-8">
+  <div class="row">
+        <div class="col-lg-4">
+            <div class="col-auto">
+              
+              <input type="text" class="form-control" id="search" placeholder="Search">
+            </div>
+        </div>
+         <div class="col-lg-4">
+          <select class="form-select" aria-label="Default select example">
+  <option selected>Sort By</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+        </div>
+  </div>
+</div>
+</div>
+<!--HEADER END-->
+
+<!--PRODUCTS START-->
+
+<!--MODAL FOR MOBILE START-
+
+<div class="d-lg-none d-md-none">hide on screens smaller than lg
+<div class="col-lg-3" style="border:1px solid;">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+<!-- Modal 
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!--MODAL FOR MOBILE END-->
+
+{% if user.is_authenticated %}
+<div class="container mt-5"> 
+<div class="row justify-content-md-center">
+<div class="col-lg-3" >
+
+   <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+    <a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg>
+   <span class="fs-5 fw-semibold">My Account</span>
+    </a>
+    <ul class="list-group" >
+       <a href="{% url "dashboard" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Dashboard</li></a>
+       <a href="{% url "orders" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Orders</li></a>
+        {% comment %} <a href="{% url "bills" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Download Bills</li></a> {% endcomment %}
+        {% comment %} <a href="{% url "user_address" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Address</li></a> {% endcomment %}
+        <a href="{% url "account_detail" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Account & Address Details</li></a>
+      <a href="{% url "password_change" %}" target="iframe_a" style="text-decoration:none;"><li class="list-group-item">Change Password</li></a>
+        </ul>
+   </div>
+</div>
+
+
+    <div class="col-lg-8 pt-5">
+        <iframe src="{% url 'dashboard' %}" onload="resizeIframe(this)" frameborder="0" scrolling="no" name="iframe_a" width="100%"></iframe>
+     <!-- onload="resizeIframe(this)" -->
+    </div>
+ 
+</div>
+</div>
+</div>
+
+ <!--<div class="b-example-divider"></div>-->
+ <br>
+ <br>
+
+ {% else %}
+ 
+ <div class="container">
+  <div class="row justify-content-md-center mt-3">
+    <div class="col-lg-6">
+     <p class="text-center">Please login to continue</p>
+    </div>
+  </div>
+ </div>
+ {% endif %}
+
+
+{% endblock body %}
+{% block productpagejs %}{% endblock productpagejs %}

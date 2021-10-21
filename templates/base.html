@@ -1,0 +1,496 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/header_footer.css' %}">
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/sidebars.css' %}">
+
+
+    <!--DATE PICKER START-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+    <!--For Search-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    <!--For Data Table on Product list-->
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <style>
+  .responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+  /*Setting Basic Dimensions to give 
+    gallary view */
+    .container2{
+        margin: 0 auto;
+        width: 90%;
+    }
+    .main_view{
+        width: 100%;
+        height: 25rem;
+    }
+    .main_view img{
+        width: 80%;
+        height: 300px;
+        padding-left:40px;
+    }
+    .side_view{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .side_view img{
+        width: 50px;
+        height: 50px;
+        
+        cursor: pointer;
+        margin:0.5rem;
+    }
+
+    /* form class */
+  .myfieldclass{
+    text-transform: lowercase;
+  }
+
+  /*for load*/
+    #myList li{display:none;
+    }
+    #loadMore {
+        color:green;
+        cursor:pointer;
+    }
+    #loadMore:hover {
+        color:black;
+    }
+
+    {% block productpagedesign %}
+
+     .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    input{
+              outline: none;
+              box-shadow:none !important;
+              border:1px solid #ccc !important;
+       }
+       .mybtn{
+              outline: none;
+              box-shadow:none !important;     
+       }
+       .productItem{
+         float:left;
+         padding:2px;
+         margin:2px;
+         width:200px;
+         }
+
+  {% endblock productpagedesign %}
+
+    </style>
+
+    <!--DATE PICKER END-->
+
+  <!--  <link rel="stylesheet" href="{% static 'css/product_page_design.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebars.css' %}">-->
+ 
+
+   <title> {% block title %} {% endblock title %} | WatchShop</title>
+   <!--STYLE ONLY FOR PRODUCT PAGE END-->
+  </head>
+  <body>
+ <div style="background-color:; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; font-size:17px;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent p-3" style="background: rgba(25, 25, 25, .8); ">
+  <div class="container">
+    
+    <a class="navbar-brand" href="{% url 'index' %}" style="color:black">
+    <i>Classic Watches</i>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" fill="currentColor" class="bi bi-watch" viewBox="0 0 14 14">
+      <path d="M8.5 5a.5.5 0 0 0-1 0v2.5H6a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V5z"/>
+      <path d="M5.667 16C4.747 16 4 15.254 4 14.333v-1.86A5.985 5.985 0 0 1 2 8c0-1.777.772-3.374 2-4.472V1.667C4 .747 4.746 0 5.667 0h4.666C11.253 0 12 .746 12 1.667v1.86a5.99 5.99 0 0 1 1.918 3.48.502.502 0 0 1 .582.493v1a.5.5 0 0 1-.582.493A5.99 5.99 0 0 1 12 12.473v1.86c0 .92-.746 1.667-1.667 1.667H5.667zM13 8A5 5 0 1 0 3 8a5 5 0 0 0 10 0z"/>
+    </svg>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'product' %}">Products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop' %}">Collection</a>
+        </li>
+
+ 
+      
+        <!--Watches-->
+        <li class="nav-item dropdown has-megamenu " >
+				<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Watches  </a>
+				<div class="dropdown-menu megamenu " role="menu" style="border-top: 2px solid black; border-radius: 40px/10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <div class="row mx-5 g-3">
+        <div class="col-lg-2 col-md-4 col-sm-2" >
+        
+         <p class="lead" style="color:black;">Latest Men Watches</p>
+         {% for j in all_product %}
+          {% if j.display_product == 'yes' and j.product_belongs == 'male' %}
+            <a class="myclass" href="/product/{{j.id}}" style="text-decoration:none">{{j.product_name|title}}</a><br>
+          {% endif %}
+        {% endfor %}
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-sm-2" >
+        <p class="lead" style="color:black;">Latest Women Watches</p>
+        {% for j in all_product %}
+           {% if j.display_product == 'yes' and j.product_belongs == 'female' %}
+          <a class="myclass" href="/product/{{j.id}}" style="text-decoration:none">{{j.product_name|title}}</a><br>
+          {% endif %}
+        {% endfor %}
+        </div>
+
+         <div class="col-lg-2 col-md-4 col-sm-2" >
+        <p class="lead" style="color:black;">Latest Bands</p>
+        {% for j in all_product %}
+           {% if j.display_product == 'yes' and j.product_belongs == 'band' %}
+          <a class="myclass" href="/product/{{j.id}}" style="text-decoration:none">{{j.product_name|title}}</a><br>
+          {% endif %}
+        {% endfor %}
+        </div>
+
+        <div class="col-lg-1 col-md-4 col-sm-1" >
+        <p class="lead" style="color:black;">Colors</p>
+        {% for c in all_color %}
+        <a class="myclass" href="" style="text-decoration:none">{{c.color|title}}</a><br>
+    {% comment %} <a class="myclass" href="" style="text-decoration:none">Blue</a><br>
+    <a class="myclass" href="" style="text-decoration:none">White</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Gold</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Silver</a><br> {% endcomment %}
+    {% endfor %} 
+        </div>
+
+        <div class="col-lg-1 col-md-4 col-sm-1" >
+        <p class="lead" style="color:black;">Brands</p>
+        {% for c in all_brand %}
+        <a class="myclass" href="" style="text-decoration:none">{{c.brand|title}}</a><br>
+        {% endfor %}  
+        </div>
+  
+        {% comment %} <div class="col-sm-6"> {% endcomment %}
+        <div class="col-lg-2 col-md-4 col-sm-1" >
+        <div class="d-none d-lg-block">
+        {% for i in all_product|slice:"2" %}
+          {% if i.display_product == 'yes' and i.product_belongs == 'female' %}
+          <a class="dropdown-item" href="/product/{{i.id}}"><img src="{{i.product_image.url}}" class="img-fluid ms-5" width="150px" height="200px"><p>{{i.product_name|title}} <sup style="color:red">New</p></sup></a>
+          {% endif %}
+        {% endfor %}
+        </div>  
+        </div>
+              
+			</li>
+      <!--Watches-->
+
+        
+    <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink" style="border-top: 2px solid black;">
+            <li><a class="dropdown-item" href="{% url 'login' %}">Sign in</a></li>
+            <li><span class="dropdown-item" href="">New Customer? <a href="{% url 'register' %}"><small style="color:blue">Register</small></a></span></li>
+            <li><a class="dropdown-item" href="#">Help & Question</a></li>
+            <li>
+          </ul>
+        </li> 
+
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+          <span class="nav-link" style="border:none;"><b>{{request.user.first_name}}</b></span>
+        </li>
+      <li class="nav-item dropdown">
+        
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>
+          </a>
+          <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink" style="border-top: 2px solid black;">
+            <li><a class="dropdown-item" href="{% url 'account' %}">My account</a></li>
+            <li><a class="dropdown-item" href="#">Setting</a></li>
+            <li><a class="dropdown-item" href="/logoutuser">Logout</a></li>
+            <li>
+          </ul>
+        </li> 
+      
+      
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'mycarts' %}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+      </svg> </a>
+        </li>
+        {% endif %}
+
+      {% if perms.WatchApp.add_product %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'addproducts' %}">Product Management</a>
+        </li>
+      {% endif %}
+      
+
+             
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+</div>
+
+
+
+
+{% block body %} {% endblock body %}    
+
+
+
+
+
+<div class="container-fluid m-0 p-0 mt-5 bg-light">
+  <footer class="py-5" style="  box-shadow: 0 -5px 5px -5px #333; ">
+    <div class="row mx-5 g-3">
+    <div class="col-lg-2 col-md-4 col-sm-3">
+    <h4 style="color:black">About us</h4>
+    <a class="myclass" href="" style="text-decoration:none">Who we are</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Blog</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Career</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Our Store</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Warranty</a><br>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-3">
+    <h4 style="color:black;">Help</h4>
+    <a class="myclass" href="" style="text-decoration:none">Exchange</a><br>
+    <a class="myclass" href="" style="text-decoration:none">FAQ's</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Help and Question</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Terms and Condition</a><br>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-3">
+    <h4 style="color:black;">Account</h4>
+    <a class="myclass" href="" style="text-decoration:none">My Account</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Sign in</a><br>
+    <a class="myclass" href="" style="text-decoration:none">Register</a><br>
+    </div>
+    <div class="col-lg-5 col-md-6 col-sm-3">
+      <h4 style="color:black;">Follow us on</h4>
+      <a href="#" style="text-decoration: none; color:black;"><span class="me-5"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-facebook" viewBox="0 0 16 16">
+        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+      </svg></span></a>
+     
+      <a href="#" style="text-decoration: none; color:black;"><span class="me-5 "><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-instagram" viewBox="0 0 16 16">
+        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+      </svg></span></a>
+  
+      <a href="#" style="text-decoration: none; color:black;"><span class="me-5"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-twitter" viewBox="0 0 16 16">
+        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+      </svg></span></a>
+   
+      <a href="#" style="text-decoration: none; color:black;"><span class="me-5"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-linkedin" viewBox="0 0 16 16">
+        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+      </svg></span></a>
+   
+      <a href="#" style="text-decoration: none; color:black;"><span class="me-5"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-youtube" viewBox="0 0 16 16">
+        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+      </svg></span></a>
+
+  {% comment %} <h4 style="color:black;">Subscribe to our newsletter</h4>
+    <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <span class="btn" id="basic-addon2" style="border:1px solid black; color:black;">SUBMIT</span> {% endcomment %}
+    </div>
+    </div>
+    </div>
+  </footer>
+</div>
+<!--
+<div class="container mb-3" style="border-top:1px solid black; border-bottom:1px solid black; box-shadow: 0 -5px 5px -5px #333; ">
+<div class="row p-3 g-3">
+<div class="col-lg-8 col-md-7 col-sm-8 ">
+© 2021 Company, Inc. All rights reserved.
+</div>
+<div class="col-lg-3 col-md-5 col-sm-3">
+<div class="row ">
+<div class="col">
+<a href="#" style="text-decoration: none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-facebook" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+</svg></span></a>
+</div>
+<div class="col">
+<a href="#" style="text-decoration: none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-instagram" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+</svg></span></a>
+</div>
+<div class="col">
+<a href="#" style="text-decoration: none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-twitter" viewBox="0 0 16 16">
+  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+</svg></span></a>
+</div>
+<div class="col">
+<a href="#" style="text-decoration: none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-linkedin" viewBox="0 0 16 16">
+  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+</svg></span></a>
+</div>
+<div class="col">
+<a href="#" style="text-decoration: none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-youtube" viewBox="0 0 16 16">
+  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+</svg></span></a>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+   <script>
+   
+    $(document).ready(function(){  
+        /*$('.addtocart').click(function(){
+            console.log("menu page");
+            $.ajax({
+            url:'/addtocart',
+            method:'GET',
+            data:{'prodid':$(this).attr('id'),'price':$('#price').html()},
+            success:function(){alert('Product added');},
+            error:function(){}
+        });*/
+
+        $('#abc').click(function(){
+          alert("bye");
+          console.log("bye")
+        });
+
+         $('.quantity').change(function(){
+           var qnt=($(this).val());
+            var id=$(this).attr('id');
+            console.log(id,qnt);
+            $.ajax({
+              url:'/mycarts/',
+              method:'POST',
+              data:{'qnt':qnt, 'id':id,'csrfmiddlewaretoken':'{{csrf_token}}'},
+              success:function(){
+              },
+              error:function(){}
+            }); 
+         });
+        
+          $("#myInput").on("keyup", function() {
+            var value = this.value.toLowerCase().trim();
+            $("#lista1 p").show().filter(function() {
+              return $(this).text().toLowerCase().trim().indexOf(value) == -1;
+            }).hide();
+          });
+
+    });
+         const change = src => {
+            document.getElementById('main').src = src
+        }
+        function resizeIframe(obj) {
+          obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        }
+
+          /*for load more on product page start*/      
+          // items to show
+          var increment = 8;
+
+          var startFilter = 0;
+          var endFilter = increment;
+
+          // item selector
+          var $this = $('.items');
+
+          var elementLength = $this.find('div').length;
+          $('.listLength').text(elementLength);
+
+          // show/hide the Load More button
+          if (elementLength > 2) {
+            $('.buttonToogle').show();
+          }
+
+          $('.items .item').slice(startFilter, endFilter).addClass('shown');
+          $('.shownLength').text(endFilter);
+          $('.items .item').not('.shown').hide();
+          $('.buttonToogle .showMore').on('click', function() {
+            if (elementLength > endFilter) {
+              startFilter += increment;
+              endFilter += increment;
+              $('.items .item').slice(startFilter, endFilter).not('.shown').addClass('shown').toggle(500);
+              $('.shownLength').text((endFilter > elementLength) ? elementLength : endFilter);
+              if (elementLength <= endFilter) {
+                  $(this).remove();
+              }
+            }
+          });
+
+        /*for load more on product page end*/  
+
+        /*Show product on table*/
+        $('#watches').DataTable({     
+            "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+              "iDisplayLength": 3
+            } 
+          );
+    </script>
+
+    {% block productpagejs %}
+
+    {% comment %} <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script> {% endcomment %}
+    <script src="{% static 'js/sidebars.js' %}"></script>
+    <script src="{% static 'js/filter.js' %}"></script>
+    {% endblock productpagejs %}
+
+  </body>
+</html>
+
+
+
